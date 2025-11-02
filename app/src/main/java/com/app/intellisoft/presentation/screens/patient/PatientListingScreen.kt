@@ -2,7 +2,9 @@ package com.app.intellisoft.presentation.screens.patient
 
 import android.app.DatePickerDialog
 import android.content.Context
+import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.compose.animation.*
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
@@ -29,8 +31,13 @@ import com.app.intellisoft.data.repository.PatientRepository
 import com.app.intellisoft.presentation.viewmodel.PatientUiState
 import com.app.intellisoft.presentation.viewmodel.PatientViewModel
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.Period
+import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeParseException
 import java.util.*
 
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PatientListingScreen(
@@ -259,6 +266,7 @@ fun PatientSummaryCard(patientCount: Int) {
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ImprovedPatientCard(
@@ -339,10 +347,7 @@ fun ImprovedPatientCard(
                         color = if (gender.equals("Male", ignoreCase = true))
                             Color(0xFF2196F3) else Color(0xFFE91E63)
                     )
-                    InfoChip(
-                        text = dob,
-                        color = MaterialTheme.colorScheme.tertiary
-                    )
+                    DobChip(dob = dob)
                 }
             }
 
@@ -350,6 +355,42 @@ fun ImprovedPatientCard(
         }
     }
 }
+
+
+
+@RequiresApi(Build.VERSION_CODES.O)
+@Composable
+fun DobChip(dob: String) {
+    val formattedText = remember(dob) {
+        try {
+            // Try multiple possible formats
+            val formats = listOf(
+                DateTimeFormatter.ofPattern("yyyy-MM-dd"),
+                DateTimeFormatter.ofPattern("dd/MM/yyyy"),
+                DateTimeFormatter.ofPattern("dd-MM-yyyy")
+            )
+
+            val dobDate = formats.firstNotNullOfOrNull { format ->
+                runCatching { LocalDate.parse(dob, format) }.getOrNull()
+            }
+
+            dobDate?.let {
+                val today = LocalDate.now()
+                val age = Period.between(it, today).years
+                val displayDate = it.format(DateTimeFormatter.ofPattern("dd MMM yyyy"))
+                "$displayDate (Age: $age)"
+            } ?: "Unknown DOB"
+        } catch (e: DateTimeParseException) {
+            "Invalid Date"
+        }
+    }
+
+    InfoChip(
+        text = formattedText,
+        color = MaterialTheme.colorScheme.tertiary
+    )
+}
+
 
 @Composable
 fun InfoChip(
