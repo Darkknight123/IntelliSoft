@@ -40,21 +40,17 @@ Login → Patient List → Add Vitals → Assessment (General / Overweight) → 
 
 ## 🖼️ Screenshots
 
-| Onboarding | Patient List | Add Vitals | Assessment |
+| Onboarding | Patient List | Patient Registration | Add Vitals | Assessment |
 |-------------|--------------|-------------|-------------|
-| ![Onboarding](screenshots/onboarding.png) | ![Patient List](screenshots/patient_list.png) | ![Vitals](screenshots/vitals_form.png) | ![Assessment](screenshots/assessment.png) |
-
-> 📝 Place screenshots in a `screenshots/` folder at the root of your project.
-
----
-
-## 🎥 Screen Recording
-
-https://github.com/yourusername/intellisoft-patient-app/assets/XXXXXXXXXXXX/screen_recording.mp4
-
-> (You can upload the `.mp4` file to GitHub and paste the auto-generated link here.)
+| ![Onboarding](<img width="446" height="937" alt="image" src="https://github.com/user-attachments/assets/2a4dbd9e-33bd-4590-8dd6-ac4625d672bf" />
+) | ![Patient List](<img width="446" height="937" alt="image" src="https://github.com/user-attachments/assets/aa02877f-805d-4759-b078-7f9d576435db" /> | ![Patient Registration (<img width="446" height="937" alt="image" src="https://github.com/user-attachments/assets/6ecbd9a7-649b-4f95-bc7b-3e4f44223ae1" />
+)]
+) | ![Vitals](<img width="446" height="937" alt="image" src="https://github.com/user-attachments/assets/87be109a-fd2c-4454-9a41-ad03305749ff" />
+) | ![Assessment](<img width="446" height="937" alt="image" src="https://github.com/user-attachments/assets/a02868a2-800d-448c-b387-ac3cff86bfbd" />
+) |
 
 ---
+
 
 ## ⚙️ Setup & Installation
 
