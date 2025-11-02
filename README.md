@@ -108,6 +108,6 @@ com.app.intellisoft/
 ## 🧑‍💻Maintainer
 
 Kerry Philip
-📧 [philiokerry57@gmail.com]
+📧 [philipkerry57@gmail.com]
 
 
