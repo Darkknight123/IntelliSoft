@@ -1,5 +1,7 @@
 package com.app.intellisoft.data.remote.models
 
+import androidx.compose.ui.graphics.Color
+
 data class AddVitalsRequestModel(
     val bmi: String,
     val height: String,
@@ -20,4 +22,11 @@ data class AddVitalsResponseData(
     val message: String,
     val patient_id: String,
     val slug: Int
+)
+
+data class BMICategory(
+    val name: String,
+    val emoji: String,
+    val color: Color,
+    val description: String
 )
